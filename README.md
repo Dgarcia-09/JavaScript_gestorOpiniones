@@ -1,1 +1,1 @@
-# JavaScript_gestorOpiniones
+# JavaScript_GestorOpiniones
