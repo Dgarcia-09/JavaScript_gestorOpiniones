@@ -31,20 +31,20 @@ export const updatePassword = async (req, res) => {
 
         const user = await User.findById(uid);
 
-        const SIoldPassword = await verify(user.password, oldPassword);
+        const contraAntigua = await verify(user.password, oldPassword);
 
-        if (!SIoldPassword) {
+        if (!contraAntigua) {
             return res.status(400).json({
                 success: false,
                 message: "La contraseña anterior es incorrecta"
             });
         }
 
-        const SIOldAndNewPassword = await verify(user.password, newPassword);
-        if (SIOldAndNewPassword) {
+        const contraRepetida = await verify(user.password, newPassword);
+        if (contraRepetida) {
             return res.status(400).json({
                 success: false,
-                message: "La nueva contraseña no puede ser igual a la anterior tonto"
+                message: "La nueva contraseña no puede ser igual a la anterior"
             });
         }
 
