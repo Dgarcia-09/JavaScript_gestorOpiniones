@@ -38,10 +38,10 @@ export const addPost = async (req, res) => {
 
 export const updatePost = async (req, res) => {
     try {
-        const { uid } = req.params;
+        const { id } = req.params;
         const updateData = req.body;
 
-        const updatedPost = await Post.findByIdAndUpdate(uid, updateData, { new: true });
+        const updatedPost = await Post.findByIdAndUpdate(id, updateData, { new: true });
 
         if (!updatedPost) {
             return res.status(404).json({
@@ -68,9 +68,9 @@ export const updatePost = async (req, res) => {
 
 export const deletePost = async(req, res) => {
     try{
-        const { uid } = req.params;
+        const { id } = req.params;
 
-        const publicacion = await Post.findByIdAndDelete(uid);
+        const publicacion = await Post.findByIdAndDelete(id);
 
         if (!publicacion) {
             return res.status(404).json({
